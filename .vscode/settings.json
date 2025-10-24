@@ -1,0 +1,7 @@
+{
+  "python.defaultInterpreterPath": ".\\.venv\\Scripts\\python.exe",
+  "jupyter.notebookFileRoot": "\",
+  "files.exclude": {
+    "**/__pycache__": true
+  }
+}

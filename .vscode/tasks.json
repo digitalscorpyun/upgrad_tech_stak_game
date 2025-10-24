@@ -1,0 +1,37 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "venv: create",
+      "type": "shell",
+      "command": "python -m venv .venv"
+    },
+    {
+      "label": "deps: install",
+      "type": "shell",
+      "command": ".\\.venv\\Scripts\\pip install -r requirements.txt"
+    },
+    {
+      "label": "app: run",
+      "type": "shell",
+      "command": ".\\.venv\\Scripts\\streamlit run src\\app\\streamlit_app.py",
+      "problemMatcher": []
+    },
+    {
+      "label": "tests",
+      "type": "shell",
+      "command": ".\\.venv\\Scripts\\pytest -q"
+    },
+    {
+      "label": "setup: all",
+      "dependsOn": [
+        "venv: create",
+        "deps: install"
+      ],
+      "dependsOrder": "sequence",
+      "type": "shell",
+      "command": "echo Setup complete",
+      "problemMatcher": []
+    }
+  ]
+}

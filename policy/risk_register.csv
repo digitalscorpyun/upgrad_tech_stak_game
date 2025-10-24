@@ -1,0 +1,6 @@
+risk,impact,likelihood,mitigation,owner
+Incorrect flags,High,Medium,Independent audit; unit tests,Product Lead
+False negatives,High,Medium,Increase testing and data slices,Data Team
+Privacy leak,High,Low,Collect minimal data; anonymize,Privacy Officer
+Misuse as advice,High,High,Advisory-only disclaimers; watermark,Legal
+Model drift/heuristics decay,Medium,Medium,Periodic review and monitoring,Engineering

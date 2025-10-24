@@ -1,0 +1,3 @@
+- **Projected balance:** Today’s balance + this transaction.
+- **Red flag:** This action may put you below $0.
+- **Advisory-only:** Education tool; verify with your bank.
