@@ -66,3 +66,23 @@ def summary(df: pd.DataFrame) -> Dict[str, Any]:
         "rows": len(df),
         "overdrafts": int(df.get("overdraft_flag", pd.Series(dtype=bool)).sum()),
     }
+
+def flag_large_withdrawals(df: pd.DataFrame, threshold: float = 0.4, 
+                           balance_col: str = "balance", tx_col: str = "amount") -> pd.DataFrame:
+    """
+    Flag transactions where the withdrawal exceeds a given fraction of the balance.
+
+    Args:
+        df: DataFrame containing balances and transaction amounts
+        threshold: Fraction of balance that triggers a large withdrawal (default 0.4)
+        balance_col: Column name for balance
+        tx_col: Column name for transaction amount
+
+    Returns:
+        DataFrame with added column:
+        - large_withdrawal_flag: True if abs(amount) > threshold * balance
+    """
+    out = df.copy()
+    # Only flag withdrawals (negative amounts)
+    out["large_withdrawal_flag"] = (out[tx_col] < 0) & (abs(out[tx_col]) > threshold * out[balance_col])
+    return out
